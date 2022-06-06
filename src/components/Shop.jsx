@@ -45,6 +45,11 @@ const Shop = () => {
         }
     }
 
+    const removeFromBasket = (itemId) => {
+        const newOrder = order.filter(item => item.id !== itemId);
+        setOrder(newOrder);
+    }
+
     return (
         <main className="container content">
             <Cart quantity={order.length} handleBasketShow={handleBasketShow}/>
@@ -54,7 +59,12 @@ const Shop = () => {
                     : <GoodsList goods={goods} addToCart={addToCart}/>
             }
             {
-                isBasketShow && <BasketList order={order} handleBasketShow={handleBasketShow}/>
+                isBasketShow
+                && <BasketList
+                    order={order}
+                    handleBasketShow={handleBasketShow}
+                    removeFromBasket={removeFromBasket}
+                />
             }
         </main>
     );
