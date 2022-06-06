@@ -50,6 +50,28 @@ const Shop = () => {
         setOrder(newOrder);
     }
 
+    const incQuantity = (itemId) => {
+        const newOrder = order.map(el => {
+            if (el.id === itemId) {
+                return {...el, quantity: el.quantity + 1}
+            } else {
+                return el;
+            }
+        })
+        setOrder(newOrder);
+    }
+    const decQuantity = (itemId) =>  {
+        const newOrder = order.map(el => {
+            const newQuantity = el.quantity - 1;
+            if (el.id === itemId) {
+                return {...el, quantity: newQuantity >= 0 ? newQuantity : 0 }
+            } else {
+                return el;
+            }
+        })
+        setOrder(newOrder);
+    }
+
     return (
         <main className="container content">
             <Cart quantity={order.length} handleBasketShow={handleBasketShow}/>
@@ -64,6 +86,8 @@ const Shop = () => {
                     order={order}
                     handleBasketShow={handleBasketShow}
                     removeFromBasket={removeFromBasket}
+                    incQuantity={incQuantity}
+                    decQuantity={decQuantity}
                 />
             }
         </main>
