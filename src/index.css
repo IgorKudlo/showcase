@@ -60,7 +60,7 @@ nav {
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
   background-color: #fff;
   width: 50rem;
   max-width: 95%;
@@ -85,6 +85,11 @@ nav {
   color: #26a69a;
 }
 
+#toast-container {
+  top: 3rem !important;
+  animation: fade-in 250ms ease-in-out;
+}
+
 @keyframes show {
   from {
     top: 70%;
@@ -92,6 +97,17 @@ nav {
   }
   to {
     top: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }

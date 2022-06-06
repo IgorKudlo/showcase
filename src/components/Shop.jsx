@@ -4,12 +4,14 @@ import Preloader from './Preloader';
 import GoodsList from './GoodsList';
 import Cart from './Cart';
 import BasketList from './BasketList';
+import Alert from './Alert';
 
 const Shop = () => {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
     const [isBasketShow, setIsBasketShow] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     const handleBasketShow = () => {
         setIsBasketShow(!isBasketShow);
@@ -43,6 +45,8 @@ const Shop = () => {
 
             setOrder(newOrder);
         }
+
+        setAlertName(item.name);
     }
 
     const removeFromBasket = (itemId) => {
@@ -72,6 +76,10 @@ const Shop = () => {
         setOrder(newOrder);
     }
 
+    const closeAlert = () => {
+        setAlertName('');
+    }
+
     return (
         <main className="container content">
             <Cart quantity={order.length} handleBasketShow={handleBasketShow}/>
@@ -89,6 +97,9 @@ const Shop = () => {
                     incQuantity={incQuantity}
                     decQuantity={decQuantity}
                 />
+            }
+            {
+                alertName && <Alert name={alertName} closeAlert={closeAlert}/>
             }
         </main>
     );
