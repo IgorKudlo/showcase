@@ -6,8 +6,8 @@ const GoodsItem = (props) => {
         displayName: name,
         displayDescription: description,
         price: {finalPrice: price},
-        displayAssets: [{background: background}]
-
+        displayAssets: [{background: background}],
+        addToCart,
     } = props;
 
     return (
@@ -20,7 +20,7 @@ const GoodsItem = (props) => {
                 <p>{description}</p>
             </div>
             <div className="card-action">
-                <button className="btn">Buy</button>
+                <button className="btn" onClick={() => addToCart({id, name, price})}>Buy</button>
                 <span className="right" style={{fontSize: '1.8rem'}}>{price}$</span>
             </div>
         </div>
