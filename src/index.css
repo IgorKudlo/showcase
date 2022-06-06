@@ -36,7 +36,7 @@ nav {
   flex-grow: 1;
 }
 
-.card-quantity {
+.cart-quantity {
 
 }
 
@@ -54,4 +54,26 @@ nav {
     top: 5rem;
     bottom: unset;
   }
+}
+
+.basket-list {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 50%);
+  background-color: #fff;
+  width: 50rem;
+  max-width: 95%;
+}
+
+.basket-close {
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  color: #fff;
+}
+
+.basket-delete {
+  cursor: pointer;
 }
