@@ -1,5 +1,11 @@
 export function reducer(state, {type, payload}) {
     switch (type) {
+        case 'SET_GOODS':
+            return {
+                ...state,
+                goods: payload || [],
+                loading: false,
+            };
         case 'ADD_TO_BASKET': {
             const itemIndex = state.order.findIndex(orderItem => orderItem.id === payload.id);
             let newOrder = null;
@@ -8,7 +14,7 @@ export function reducer(state, {type, payload}) {
                     ...payload,
                     quantity: 1,
                 };
-                newOrder = [...state, newItem];
+                newOrder = [...state.order, newItem];
             } else {
                 newOrder = state.order.map((orderItem, index) => {
                     if (index === itemIndex) {

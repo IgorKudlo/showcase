@@ -14,6 +14,9 @@ const initialState = {
 export const ContextProvider = ({children}) => {
     const [value, dispatch] = useReducer(reducer, initialState);
 
+    value.setGoods = (data) => {
+        dispatch({ type: 'SET_GOODS', payload: data });
+    }
     value.closeAlert = () => {
         dispatch({ type: 'CLOSE_ALERT' });
     }
